@@ -3,9 +3,11 @@ package com.today36524.school.bean
 import java.text.SimpleDateFormat
 import java.util.Calendar
 
+import com.today36524.school.dao.ClassDao
+
 case class Grade(id:String,level:Int,year:Int,schoolId:String) {
-  val sdf:SimpleDateFormat = new SimpleDateFormat("yyyy")
-  val grd: Int = sdf.format(Calendar.getInstance().getTime).toInt-year
+  val sdf:SimpleDateFormat = new SimpleDateFormat("yyyy.MM")
+  val grd: Double = sdf.format(Calendar.getInstance().getTime).toDouble-(year+0.08)
 
   def getName:String =
     (if(level==1) """幼"""
@@ -29,4 +31,6 @@ case class Grade(id:String,level:Int,year:Int,schoolId:String) {
   def getLevel = level
   def getYear = year
   def getSchoolId = schoolId
+
+  def getClasses = ClassDao.findClassesByGrade(id)
 }

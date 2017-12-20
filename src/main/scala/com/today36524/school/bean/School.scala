@@ -1,5 +1,7 @@
 package com.today36524.school.bean
 
+import com.today36524.school.dao.GradeDao
+
 //import javax.persistence.{Column, Entity, Id, Table}
 //
 //import com.fasterxml.jackson.databind.BeanProperty
@@ -17,4 +19,6 @@ case class School(
                   name:String) {
   def getId = id
   def getName = name
+
+  def getGrades = GradeDao.findGradesBySchool(id)
 }

@@ -7,5 +7,7 @@ package com.today36524.school.bean
   * @param lessonorder 排序号
   */
 case class Lesson(name:String,namecn:String,lessonorder:Int) {
-
+  def getName = name
+  def getNamecn = namecn
+  def getLessonorder = lessonorder
 }
