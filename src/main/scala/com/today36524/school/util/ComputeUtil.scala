@@ -22,10 +22,13 @@ object ComputeUtil {
     val stuList:ListBuffer[Row] = new ListBuffer[Row]
     if (c!=null) stuList ++= StudentDao.findStudentRowsByClass(c.id)
     if (g!=null)
-      for(gclazz <- ClassDao.findClassesByGrade(g.id)) stuList ++= StudentDao.findStudentRowsByClass(gclazz.id)
+      for(gclazz <- ClassDao.findClassesByGrade(g.id))
+        stuList ++= StudentDao.findStudentRowsByClass(gclazz.id)
     if(s!=null)
-    {for(sgrs <- GradeDao.findGradesBySchool(s.id))
-      for(scls <- sgrs.getClasses) stuList ++= StudentDao.findStudentRowsByClass(scls.id)}
+    {
+      for(sgrs <- GradeDao.findGradesBySchool(s.id))
+        for(scls <- sgrs.getClasses) stuList ++= StudentDao.findStudentRowsByClass(scls.id)
+    }
     stuList.toList
   }
 
@@ -104,7 +107,7 @@ object ComputeUtil {
     if(s!=null)
       {
         sgn.append((if(g!=null) "以及" else "") + "学校"+s.getName+"中的各个年级：")
-        for(i <- 0 until s.getGrades.size) sgn.append(if(i!=0) "," else "" +s.getGrades(i).getName + "年级")
+        for(i <- s.getGrades.indices) sgn.append(if(i!=0) "," else "" +s.getGrades(i).getName + "年级")
       }
     val gnn = if(gn.length>0 || sgn.length>0) gn + sgn.toString + " 的总分前20名如下：" else ""
 

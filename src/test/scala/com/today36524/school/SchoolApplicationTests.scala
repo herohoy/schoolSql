@@ -1,6 +1,7 @@
 package com.today36524.school
 
-import com.today36524.school.bean.{Clazz, Grade}
+import com.today36524.school.bean.{Clazz, Grade, School}
+import com.today36524.school.dao.SchoolDao
 import com.today36524.school.util.ComputeUtil
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -23,7 +24,7 @@ class SchoolApplicationTests {
     )
 
     ComputeUtil.top20ofGrades(
-      g = Grade("1",2,2016,"1")
+      s = SchoolDao.findSchoolById("1").get
     )
   }
 }

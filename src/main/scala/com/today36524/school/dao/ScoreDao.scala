@@ -2,7 +2,7 @@ package com.today36524.school.dao
 
 import com.today36524.school.bean.Score
 import com.today36524.school.util.ScalaSqlUtil
-import wangzx.scala_commons.sql.Row
+import wangzx.scala_commons.sql._
 
 object ScoreDao {
    def findAllScores = ScalaSqlUtil.dataSource.rows[Score](

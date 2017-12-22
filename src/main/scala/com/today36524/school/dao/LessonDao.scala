@@ -2,6 +2,7 @@ package com.today36524.school.dao
 
 import com.today36524.school.bean.Lesson
 import com.today36524.school.util.ScalaSqlUtil
+import wangzx.scala_commons.sql._
 
 object LessonDao {
   def findAllLessons = ScalaSqlUtil.dataSource.rows[Lesson](
