@@ -20,18 +20,18 @@ object SchoolApplication {
 @SpringBootApplication
 @RestController
 class SchoolApplication{
-//  @Autowired
-//  var schoolDao : SchoolDao = _
-//
-//  @RequestMapping(Array("/schoolList"))
-//  @ResponseBody
-//  def schoolList: java.util.Map[String, java.util.List[School]]
-//  =
-//    JavaConverters.mapAsJavaMap(
-//     Map("schools" -> JavaConverters.seqAsJavaList(
-//       schoolDao.findAllSchool
-//     )
-//  ))
+  @Autowired
+  var schoolDao : SchoolDao = _
+
+  @RequestMapping(Array("/schoolList"))
+  @ResponseBody
+  def schoolList: java.util.Map[String, java.util.List[School]]
+  =
+    JavaConverters.mapAsJavaMap(
+     Map("schools" -> JavaConverters.seqAsJavaList(
+       schoolDao.findAllSchool
+     )
+  ))
 
 
   @RequestMapping(Array("/gradeList"))

@@ -19,32 +19,36 @@ object ScalaSqlUtil {
     val path = Thread.currentThread().getContextClassLoader
       .getResource("application.properties").getPath //文件要放到resource文件夹下
     properties.load(new FileInputStream(path))
-    val dataSource: DataSource = new MysqlDataSource{
-      this.url = properties.getProperty("spring.datasource.url")
-      this.user = properties.getProperty("spring.datasource.username")
-      this.password = properties.getProperty("spring.datasource.password")
-    }
+    val dataSource: MysqlDataSource = new MysqlDataSource
+    dataSource.setURL(properties.getProperty("spring.datasource.url"))
+    dataSource.setUser(properties.getProperty("spring.datasource.username"))
+    dataSource.setPassword(properties.getProperty("spring.datasource.password"))
 
     dataSource
   }
 
 }
 
-//@Configuration
-//class ScalaSqlUtil{
-//
-//  @Bean(Array("scalaDataSource"))
-//  def getDataSource : DataSource = {
-//    val properties = new Properties()
-//    val path = Thread.currentThread().getContextClassLoader
-//      .getResource("application.properties").getPath //文件要放到resource文件夹下
-//    properties.load(new FileInputStream(path))
-//    val dataSource = new MysqlDataSource{
+@Configuration
+class ScalaSqlUtil{
+
+  @Bean(Array("scalaDataSource"))
+  def getDataSource : DataSource = {
+    val properties = new Properties()
+    val path = Thread.currentThread().getContextClassLoader
+      .getResource("application.properties").getPath //文件要放到resource文件夹下
+    properties.load(new FileInputStream(path))
+    val dataSource = new MysqlDataSource
+    //以下代码模式在本场景不适用
+//    {
 //      this.url = properties.getProperty("spring.datasource.url")
 //      this.user = properties.getProperty("spring.datasource.username")
 //      this.password = properties.getProperty("spring.datasource.password")
 //    }
-//
-//    dataSource
-//  }
-//}
+    dataSource.setURL(properties.getProperty("spring.datasource.url"))
+    dataSource.setUser(properties.getProperty("spring.datasource.username"))
+    dataSource.setPassword(properties.getProperty("spring.datasource.password"))
+
+    dataSource
+  }
+}

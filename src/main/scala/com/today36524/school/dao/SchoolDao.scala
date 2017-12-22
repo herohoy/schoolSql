@@ -1,5 +1,7 @@
 package com.today36524.school.dao
 
+import javax.sql.DataSource
+
 import com.today36524.school.util.ScalaSqlUtil
 import com.today36524.school.bean.School
 import org.springframework.beans.factory.annotation.{Autowired, Qualifier}
@@ -28,8 +30,7 @@ object SchoolDao {
 @Repository
 class SchoolDao {
   @Autowired
-  @Qualifier("scalaDataSource")
-  var dataSource:RichDataSource = _
+  var dataSource:DataSource = _
 
   def findAllSchool: List[School]
   = dataSource.rows[School](

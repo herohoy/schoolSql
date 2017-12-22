@@ -21,4 +21,10 @@ case class School(
   def getName = name
 
   def getGrades = GradeDao.findGradesBySchool(id)
+
+  /**
+    * 默认构造的声明
+    * @return
+    */
+  def this() = this("1","today school")
 }
