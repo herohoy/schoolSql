@@ -13,7 +13,7 @@ object ScoreDao {
 
   def findScoreByStudentIdAndLessonName(studentId:String,lessonName:String) =
     ScalaSqlUtil.dataSource.row[Score](
-      s"""select studentId,lessonName,point from midl_score
+      sql"""select studentId,lessonName,point from midl_score
          where studentId=$studentId and lessonName=$lessonName""")
 
 //  def statisticStuAch() = {
