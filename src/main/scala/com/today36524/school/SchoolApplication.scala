@@ -7,8 +7,10 @@ import com.today36524.school.util.ScalaSqlUtil
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.context.annotation.ComponentScan
 import org.springframework.web.bind.annotation.{RequestMapping, ResponseBody, RestController}
 import wangzx.scala_commons.sql._
+
 import scala.collection.JavaConverters
 
 object SchoolApplication {
@@ -19,6 +21,7 @@ object SchoolApplication {
 
 @SpringBootApplication
 @RestController
+@ComponentScan(Array("com.today36524.**","com.cnovit.controller"))
 class SchoolApplication{
   @Autowired
   var schoolDao : SchoolDao = _
